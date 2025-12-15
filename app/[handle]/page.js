@@ -8,48 +8,53 @@ export default async function Page({ params }) {
     const db = client.db("bittree")
     const collection = db.collection("links")
 
-    // If the handle is already claimed, you cannot create the bittree
-    const item = await collection.findOne({handle: handle})
-    if(!item){
+    const item = await collection.findOne({ handle: handle })
+    if (!item) {
         return notFound()
     }
 
-    console.log(item)
+    return (
+        <div className="flex min-h-screen bg-purple-400 justify-center items-start py-10 px-4 sm:px-0">
+            {item && (
+                <div className="photo flex justify-center flex-col items-center gap-4">
 
-    const item2 = {
-        "_id": {
-            "$oid": "6729e97390cf30c8f66c4c68"
-        },
-        "links": [
-            {
-                "link": "https://www.instagram.com/codewithharry/?hl=en",
-                "linktext": "Instagram"
-            },
-            {
-                "link": "https://www.codewithharry.com",
-                "linktext": "Website"
-            },
-            {
-                "link": "https://www.YouTube.com/codewithharry/?hl=en",
-                "linktext": "YouTube"
-            }
-        ],
-        "handle": "harry",
-        "pic": "https://avatars.githubusercontent.com/u/48705673?v=4"
-    }
-    return <div className="flex min-h-screen bg-purple-400 justify-center items-start py-10">
-        {item && <div className="photo flex justify-center flex-col items-center gap-4"> 
-            <img src={item.pic} alt="" />
-            <span className="font-bold text-xl">@{item.handle}</span>
-            <span className="desc w-80 text-center">{item.desc}</span>
-            <div className="links">
-                {item.links.map((item, index)=>{
-                    return <Link target="blank"  key={index} href= {item.link}><div className="bg-purple-100 py-4 shadow-lg px-2 min-w-96 flex justify-center rounded-md my-3">
-                       {item.linktext}
-                       
-                    </div></Link> 
-                })}
-            </div>
-      </div>}
-    </div>
+                    {/* IMAGE */}
+                    <img
+                        src={item.pic}
+                        alt=""
+                        className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full object-cover"
+                    />
+
+                    {/* HANDLE */}
+                    <span className="font-bold text-xl text-center">
+                        @{item.handle}
+                    </span>
+
+                    {/* DESCRIPTION */}
+                    <span className="desc w-80 sm:w-96 text-center">
+                        {item.desc}
+                    </span>
+
+                    {/* LINKS */}
+                    <div className="links w-full flex flex-col items-center">
+                        {item.links.map((item, index) => {
+                            return (
+                                <Link target="blank" key={index} href={item.link}>
+                                    <div
+                                        className="bg-purple-100 py-4 shadow-lg px-2 
+                                                   w-72 sm:min-w-96
+                                                   flex justify-center 
+                                                   rounded-md my-3 text-center"
+                                    >
+                                        {item.linktext}
+                                    </div>
+                                </Link>
+                            )
+                        })}
+                    </div>
+
+                </div>
+            )}
+        </div>
+    )
 }
