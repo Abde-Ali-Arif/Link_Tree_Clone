@@ -13,11 +13,11 @@ export default function Home() {
   }
 
   return (
-    <main>
-      <section className="bg-[#254f1a] min-h-screen grid grid-cols-1 md:grid-cols-2 gap-8 px-6 md:px-16">
+    <main className="">
+      <section className="bg-[#254f1a] min-h-screen grid grid-cols-1 md:grid-cols-2 gap-8 px-6 md:px-16 py-[130px] ">
         
         {/* LEFT CONTENT */}
-        <div className="flex justify-center flex-col gap-4 md:gap-3">
+        <div className="flex justify-center flex-col gap-4 md:gap-3 ">
           <p className="text-yellow-300 font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
             Everything you
           </p>

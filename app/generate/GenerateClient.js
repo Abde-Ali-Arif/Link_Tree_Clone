@@ -55,7 +55,7 @@ const Generate = () => {
   }
 
   return (
-    <div className="bg-[#E9C0E9] min-h-screen grid grid-cols-1 md:grid-cols-2">
+    <div className="bg-[#E9C0E9] min-h-screen grid grid-cols-1 md:grid-cols-2 py-[90px]">
 
       {/* COL 1 */}
       <div className="col1 flex justify-center items-center flex-col text-gray-900 px-4 sm:px-0">

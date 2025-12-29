@@ -7,13 +7,12 @@ export default async function UsersPage() {
   const db = client.db("bittree");
   const collection = db.collection("links");
 
-  // Fetch all users
   const users = await collection.find({}).toArray();
 
   return (
     <div className="min-h-screen bg-purple-400 flex justify-center px-4 sm:px-6 py-10">
       <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl">
-        
+
         <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-white">
           Registered Users
         </h1>
